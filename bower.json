@@ -1,0 +1,36 @@
+{
+  "name": "rdocs",
+  "version": "0.0.1",
+  "description": "Redminportal Docs",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "tutorial",
+    "redminportal",
+    "documentation"
+  ],
+  "authors": [
+    "Redooor LLP"
+  ],
+  "license": "MIT",
+  "homepage": "http://redminportal.redooor.com",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "docs"
+  ],
+  "devDependencies": {
+    "respond": "~1.4.2",
+    "html5shiv": "~3.7.3",
+    "font-awesome": "~4.4.0",
+    "angular": "~1.3.17",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "redmaterials": "master"
+  }
+}
