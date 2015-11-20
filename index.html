@@ -2,1495 +2,1501 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Redminportal Docs</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/redmaterials.min.css">
-  <link rel="stylesheet" href="assets/css/rdocs.min.css">
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Redminportal Docs</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/redmaterials.min.css">
+    <link rel="stylesheet" href="assets/css/rdocs.min.css?v=0.0.1">
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        body {
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="main">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <strong>Model</strong> refers to Laravel's Illuminate\Database\Eloquent\Model
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Announcement</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ title : string(255)</li>
-                <li>+ content : text</li>
-                <li>+ private : bool = true</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = announcements</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ images() : Image</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ <u>validate(array(key => value))</u> : Validator</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Announcement</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Bundle</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ sku : string(255) <i>unique</i></li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ price : decimal(8,2) = 0</li>
-                <li>+ featured : bool = false</li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = bundles</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ category() : Category</li>
-                <li>+ coupons() : Coupon</li>
-                <li>+ images() : Image</li>
-                <li>+ orders() : Order</li>
-                <li>+ pricelists() : Pricelist</li>
-                <li>+ products() : Product</li>
-                <li>+ tags() : Tag</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ totalvalue() : decimal(8,2)</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Bundle</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Coupon</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Order</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Pricelist</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Product</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Tag</td>
-              </tr>
-              <tr>
-                <td>Bundle</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Category</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255) <i>unique</i></li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ order : int = 0</li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = categories</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ bundles() : Bundle</li>
-                <li>+ categories() : Category</li>
-                <li>+ coupons() : Coupon</li>
-                <li>+ images() : Image</li>
-                <li>+ pages() : Page</li>
-                <li>+ parentCategory() : Category</li>
-                <li>+ portfolios() : Portfolio</li>
-                <li>+ posts() : Post</li>
-                <li>+ products() : Product</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ <u>getAllActiveOrdered()</u> : Category</li>
-                <li>+ printCategory(bool) : string <i>HTML</i></li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Bundle</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Coupon</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Page</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Portfolio</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Post</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Product</td>
-              </tr>
-              <tr>
-                <td>Category</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Coupon</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ code : string</li>
-                <li>+ description : text <i>nullable</i></li>
-                <li>+ amount : decimal(8,2)</li>
-                <li>+ is_percent : bool = false</li>
-                <li>+ start_date : datetime <i>nullable</i></li>
-                <li>+ end_date : datetime</li>
-                <li>+ usage_limit_per_coupon : unsigned <i>nullable</i></li>
-                <li>+ usage_limit_per_user : unsigned <i>nullable</i></li>
-                <li>+ max_spent : decimal(8,2) <i>nullable</i></li>
-                <li>+ min_spent : decimal(8,2) <i>nullable</i></li>
-                <li>+ multiple_coupons : bool = false</li>
-                <li>+ exclude_sale_item : bool = false</li>
-                <li>+ usage_limit_per_coupon_count : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = coupons</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ bundles() : Bundle</li>
-                <li>+ categories() : Category</li>
-                <li>+ orders() : Order</li>
-                <li>+ pricelists() : Pricelist</li>
-                <li>+ products() : Product</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Coupon</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Bundle</td>
-              </tr>
-              <tr>
-                <td>Coupon</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Coupon</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Order</td>
-              </tr>
-              <tr>
-                <td>Coupon</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Pricelist</td>
-              </tr>
-              <tr>
-                <td>Coupon</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Product</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Group</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string <i>unique</i></li>
-                <li>+ permissions : text <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = groups</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ users() : User</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ permissions() : array(key => value)</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Group</td>
-                <td> * &lt;------&gt; * </td>
-                <td>User</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Image</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ path : string(320)</li>
-                <li>+ imageable_id : unsigned</li>
-                <li>+ imageable_type : string(255)</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = images</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ imageable() : Model</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ deleteFiles(string)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Mailinglist</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ email : string(255) <i>unique</i></li>
-                <li>+ first_name : string(255)</li>
-                <li>+ last_name : string(255)</li>
-                <li>+ active : bool = true</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = mailinglists</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Media</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ path : string(320)</li>
-                <li>+ sku : string(255) <i>unique nullable</i></li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ featured : bool = false</li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ mimetype : string(255) = application/pdf</li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = medias</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ category() : Category</li>
-                <li>+ images() : Image</li>
-                <li>+ tags() : Tag</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Media</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Media</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Media</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Tag</td>
-              </tr>
-              <tr>
-                <td>Media</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Membership</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ rank : int = 0</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = memberships</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ medias() : Media</li>
-                <li>+ modules() : Module</li>
-                <li>+ pricelists() : Pricelist</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Membership</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Media</td>
-              </tr>
-              <tr>
-                <td>Membership</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Module</td>
-              </tr>
-              <tr>
-                <td>Membership</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Pricelist</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Module</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ sku : string(255) <i>unique nullable</i></li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ featured : bool = false</li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = modules</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ category() : Category</li>
-                <li>+ images() : Image</li>
-                <li>+ medias() : Media</li>
-                <li>+ memberships() : Membership</li>
-                <li>+ pricelists() : Pricelist</li>
-                <li>+ tags() : Tag</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Module</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Module</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Module</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Media</td>
-              </tr>
-              <tr>
-                <td>Module</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Membership</td>
-              </tr>
-              <tr>
-                <td>Module</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Pricelist</td>
-              </tr>
-              <tr>
-                <td>Module</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Tag</td>
-              </tr>
-              <tr>
-                <td>Module</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">ModuleMediaMembership</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ media_id : unsigned</li>
-                <li>+ membership_id : unsigned</li>
-                <li>+ module_id : unsigned</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = module_media_memberships</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ media() : Media</li>
-                <li>+ membership() : Membership</li>
-                <li>+ module() : Module</li>
-              </ul>
-              <div class="alert alert-warning">There's no connection back to MMM from Media, Membership and Module.</div>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>MMM</td>
-                <td> ? ------&gt; 1 </td>
-                <td>Media</td>
-              </tr>
-              <tr>
-                <td>MMM</td>
-                <td> ? ------&gt; 1 </td>
-                <td>Membership</td>
-              </tr>
-              <tr>
-                <td>MMM</td>
-                <td> ? ------&gt; 1 </td>
-                <td>Module</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Order</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ user_id : unsigned</li>
-                <li>+ paid : decimal(8,2) = 0</li>
-                <li>+ transaction_id : string = Unknown <i>nullable</i></li>
-                <li>+ payment_status : string = Completed <i>nullable</i></li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = orders</li>
-                <li># casts : array = [options => array]</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ bundles() : Bundle</li>
-                <li>+ coupons() : Coupon</li>
-                <li>+ pricelists() : Pricelist</li>
-                <li>+ products() : Product</li>
-                <li>+ user() : User</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ getTotalprice() : decimal(8,2)</li>
-                <li>+ addCoupon(Coupon) : Coupon</li>
-                <li>+ getDiscounts() : array(key => value)</li>
-                <li>+ setDiscounts() : array(key => value)</li>
-                <li>+ verifyDiscount(Model, Coupon, Model = null) : array(key => value)</li>
-              </ul>
-              <div class="alert alert-warning">
-                getDiscounts(), setDiscounts() and verifyDiscount() all return
-                an array ('type', 'id', 'name', 'price', 'coupon_id', 'code',
-                'amount', 'is_percent', 'value') that looks like it can be set
-                up as a class instead.
-              </div>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Order</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Bundle</td>
-              </tr>
-              <tr>
-                <td>Order</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Coupon</td>
-              </tr>
-              <tr>
-                <td>Order</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Pricelist</td>
-              </tr>
-              <tr>
-                <td>Order</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Product</td>
-              </tr>
-              <tr>
-                <td>Order</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>User</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Page</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ title : string(255)</li>
-                <li>+ slug : string(255)</li>
-                <li>+ content : text</li>
-                <li>+ private : bool = true</li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = pages</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ category() : Category</li>
-                <li>+ images() : Image</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Page</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Page</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Page</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Portfolio</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = portfolios</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ category() : Category</li>
-                <li>+ images() : Image</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Portfolio</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Portfolio</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Portfolio</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Post</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ title : string(255)</li>
-                <li>+ slug : string(255)</li>
-                <li>+ content : text</li>
-                <li>+ featured : bool = true</li>
-                <li>+ private : bool = true</li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = posts</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ category() : Category</li>
-                <li>+ images() : Image</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Post</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Post</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Post</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Pricelist</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ price : decimal(8,2) = 0</li>
-                <li>+ module_id : unsigned</li>
-                <li>+ membership_id : unsigned</li>
-                <li>+ active : bool = true</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = pricelists</li>
-                <li># appends : array = [name]</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ bundles() : Bundle</li>
-                <li>+ coupons() : Coupon</li>
-                <li>+ membership() : Membership</li>
-                <li>+ module() : Module</li>
-                <li>+ orders() : Order</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ getNameAttribute() : string</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Pricelist</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Bundle</td>
-              </tr>
-              <tr>
-                <td>Pricelist</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Coupon</td>
-              </tr>
-              <tr>
-                <td>Pricelist</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Membership</td>
-              </tr>
-              <tr>
-                <td>Pricelist</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Module</td>
-              </tr>
-              <tr>
-                <td>Pricelist</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Order</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Product</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ sku : string(255) <i>unique</i></li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ price : decimal(8,2) = 0</li>
-                <li>+ featured : bool = false</li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ category_id : unsigned <i>nullable</i></li>
-                <li>+ weight_unit : string(3) <i>nullable</i></li>
-                <li>+ volume_unit : string(3) <i>nullable</i></li>
-                <li>+ length : decimal(8,3) <i>nullable</i></li>
-                <li>+ width : decimal(8,3) <i>nullable</i></li>
-                <li>+ height : decimal(8,3) <i>nullable</i></li>
-                <li>+ weight : decimal(8,3) <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = products</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ bundles() : Bundle</li>
-                <li>+ category() : Category</li>
-                <li>+ coupons() : Coupon</li>
-                <li>+ images() : Image</li>
-                <li>+ orders() : Order</li>
-                <li>+ tags() : Tag</li>
-                <li>+ translations() : Translation</li>
-                <li>+ variantParents() : Product</li>
-                <li>+ variants() : Product</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Product</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Bundle</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Category</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Coupon</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Order</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Tag</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-              <tr>
-                <td>Product</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Product (child)</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Promotion</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string(255)</li>
-                <li>+ short_description : string(255)</li>
-                <li>+ long_description : text <i>nullable</i></li>
-                <li>+ start_date : date</li>
-                <li>+ end_date : date</li>
-                <li>+ active : bool = true</li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = promotions</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ images() : Image</li>
-                <li>+ translations() : Translation</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ <u>getAllActiveOrdered()</u> : Promotion</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Promotion</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Image</td>
-              </tr>
-              <tr>
-                <td>Promotion</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Translation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Tag</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ name : string</li>
-                <li>+ taggable_id : unsigned</li>
-                <li>+ taggable_type : string(255)</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = tags</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ bundles() : Bundle</li>
-                <li>+ medias() : Media</li>
-                <li>+ modules() : Module</li>
-                <li>+ products() : Product</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ <u>addTag(Model, string)</u> : bool</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>Tag</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Bundle</td>
-              </tr>
-              <tr>
-                <td>Tag</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Media</td>
-              </tr>
-              <tr>
-                <td>Tag</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Module</td>
-              </tr>
-              <tr>
-                <td>Tag</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>Product</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">Translation</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ lang : string(3)</li>
-                <li>+ content : text</li>
-                <li>+ translatable_id : unsigned</li>
-                <li>+ translatable_type : string(255)</li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = translations</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ translatable() : Model</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">User</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ email : string <i>unique</i></li>
-                <li>+ password : string(60)</li>
-                <li>+ remember_token : string</li>
-                <li>+ persmissions : text <i>nullable</i></li>
-                <li>+ activated : bool = false</li>
-                <li>+ activation_code : string <i>nullable index</i></li>
-                <li>+ actiavted_at : timestamp <i>nullable</i></li>
-                <li>+ last_login : timestamp <i>nullable</i></li>
-                <li>+ persist_code : string <i>nullable</i></li>
-                <li>+ reset_password_code : string <i>nullable index</i></li>
-                <li>+ first_name : string <i>nullable</i></li>
-                <li>+ last_name : string <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = users</li>
-                <li># fillable : array = ['name', 'email', 'password']</li>
-                <li># hidden : array = ['password', 'remember_token']</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ groups() : Group</li>
-                <li>+ orders() : Order</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>User</td>
-                <td> * &lt;------&gt; * </td>
-                <td>Group</td>
-              </tr>
-              <tr>
-                <td>User</td>
-                <td> 1 &lt;------&gt; * </td>
-                <td>Order</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Models</small>
-              </span>
-              <h3 class="panel-title">UserPricelist (deprecated)</h3>
-              <i>{ extends Model }</i>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li>+ id : unsigned</li>
-                <li>+ user_id : unsigned</li>
-                <li>+ pricelist_id : unsigned</li>
-                <li>+ paid : decimal(8,2) = 0</li>
-                <li>+ transaction_id : string = Unknown <i>nullable</i></li>
-                <li>+ payment_status : string = Completed <i>nullable</i></li>
-                <li>+ options : text <i>nullable</i></li>
-                <li>+ created_at : datetime</li>
-                <li>+ updated_at : datetime</li>
-                <li># table : string = orders</li>
-                <li># casts : array = [options => array]</li>
-                <li>- pricelistId</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ pricelists() : Pricelist</li>
-                <li>+ user() : User</li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ save(array(key => value)) : bool
-                  <span class="label label-default">override</span>
-                </li>
-                <li>+ delete() : bool
-                  <span class="label label-default">override</span>
-                </li>
-              </ul>
-              <hr>
-              <ul class="list-unstyled">
-                <li>+ getPricelistIdAttribute() : int</li>
-                <li>+ setPricelistIdAttribute(int)</li>
-                <li>+ getPricelistAttribute() : Pricelist</li>
-              </ul>
-            </div>
-            <table class="table table-bordered">
-              <tr>
-                <td>UserPricelist</td>
-                <td> ? &lt;------&gt; * </td>
-                <td>Pricelist</td>
-              </tr>
-              <tr>
-                <td>UserPricelist</td>
-                <td> * &lt;------&gt; 1 </td>
-                <td>User</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Helpers</small>
-              </span>
-              <h3 class="panel-title">RHelper</h3>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ <u>formatCurrency(float, string)</u> : string</li>
-                <li>+ <u>keywords(array(Tag))</u> : string</li>
-                <li>+ <u>cleanSlug(string)</u> : string</li>
-                <li>+ <u>joinPaths()</u> : string</li>
-                <li>+ <u>printMenu(array(string), string)</u> : string <i>HTML</i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span>
-                <small>Redooor\Redminportal\App\Helpers</small>
-              </span>
-              <h3 class="panel-title">RImage</h3>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                <li># imagine : Imagine\Gd\Imagine</li>
-                <li># library : string</li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-unstyled">
-                <li>+ __construct()</li>
-                <li># setLibrary()</li>
-                <li>+ resize(url : string, width : int, [height : int = null], [crop : bool = null], [quality: int = 90]) : string</li>
-                <li>+ thumb(url : string, width : int, [height : int = null]) : string</li>
-                <li>+ upload(File, [dir : string = null], [createDimensions : bool = false]) : string</li>
-                <li>+ createDimensions(url : string, [dimenstions : array]) : string</li>
-                <li>+ getUrl(url : string, [size : string = thumb], [fullUrl : bool = false]) : string</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end of row -->
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <p>
-                    <small>Redooor\Redminportal\App\Interfaces</small>
-                  </p>
-                  <i>&lt; interface &gt;</i>
-                  <h3 class="panel-title">Measurable</h3>
+    <div id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <strong>Model</strong> refers to Laravel's Illuminate\Database\Eloquent\Model
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-footer">
-                  <ul class="list-unstyled">
-                    <li>+ <u>getUnits()</u> : array(string)</li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <span>
-                    <small>Redooor\Redminportal\App\Classes</small>
-                  </span>
-                  <h3 class="panel-title">Volume</h3>
-                  <i>{ implements Measurable }</i>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Announcement</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ title : string(255)</li>
+                                <li>+ content : text</li>
+                                <li>+ private : bool = true</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = announcements</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ images() : Image</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ <u>validate(array(key => value))</u> : Validator</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Announcement</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="panel-footer">
-                  <ul class="list-unstyled">
-                    <li>+ <u>getUnits()</u> : array(string)</li>
-                  </ul>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Bundle</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ sku : string(255) <i>unique</i></li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ price : decimal(8,2) = 0</li>
+                                <li>+ featured : bool = false</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = bundles</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ category() : Category</li>
+                                <li>+ coupons() : Coupon</li>
+                                <li>+ images() : Image</li>
+                                <li>+ orders() : Order</li>
+                                <li>+ pricelists() : Pricelist</li>
+                                <li>+ products() : Product</li>
+                                <li>+ tags() : Tag</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ totalvalue() : decimal(8,2)</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Bundle</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Coupon</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Order</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Pricelist</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Product</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Tag</td>
+                            </tr>
+                            <tr>
+                                <td>Bundle</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-              </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Category</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255) <i>unique</i></li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ order : int = 0</li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = categories</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ bundles() : Bundle</li>
+                                <li>+ categories() : Category</li>
+                                <li>+ coupons() : Coupon</li>
+                                <li>+ images() : Image</li>
+                                <li>+ pages() : Page</li>
+                                <li>+ parentCategory() : Category</li>
+                                <li>+ portfolios() : Portfolio</li>
+                                <li>+ posts() : Post</li>
+                                <li>+ products() : Product</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ <u>getAllActiveOrdered()</u> : Category</li>
+                                <li>+ printCategory(bool) : string <i>HTML</i></li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Coupon</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Page</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Portfolio</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Post</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Product</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <span>
-                    <small>Redooor\Redminportal\App\Classes</small>
-                  </span>
-                  <h3 class="panel-title">Weight</h3>
-                  <i>{ implements Measurable }</i>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Coupon</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ code : string</li>
+                                <li>+ description : text <i>nullable</i></li>
+                                <li>+ amount : decimal(8,2)</li>
+                                <li>+ is_percent : bool = false</li>
+                                <li>+ start_date : datetime <i>nullable</i></li>
+                                <li>+ end_date : datetime</li>
+                                <li>+ usage_limit_per_coupon : unsigned <i>nullable</i></li>
+                                <li>+ usage_limit_per_user : unsigned <i>nullable</i></li>
+                                <li>+ max_spent : decimal(8,2) <i>nullable</i></li>
+                                <li>+ min_spent : decimal(8,2) <i>nullable</i></li>
+                                <li>+ multiple_coupons : bool = false</li>
+                                <li>+ exclude_sale_item : bool = false</li>
+                                <li>+ usage_limit_per_coupon_count : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = coupons</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ bundles() : Bundle</li>
+                                <li>+ categories() : Category</li>
+                                <li>+ orders() : Order</li>
+                                <li>+ pricelists() : Pricelist</li>
+                                <li>+ products() : Product</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Coupon</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr>
+                                <td>Coupon</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Coupon</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Order</td>
+                            </tr>
+                            <tr>
+                                <td>Coupon</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Pricelist</td>
+                            </tr>
+                            <tr>
+                                <td>Coupon</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Product</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="panel-footer">
-                  <ul class="list-unstyled">
-                    <li>+ <u>getUnits()</u> : array(string)</li>
-                  </ul>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Group</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string <i>unique</i></li>
+                                <li>+ permissions : text <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = groups</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ users() : User</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ permissions() : array(key => value)</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Group</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>User</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-              </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Image</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ path : string(320)</li>
+                                <li>+ imageable_id : unsigned</li>
+                                <li>+ imageable_type : string(255)</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = images</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ imageable() : Model</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ deleteFiles(string)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Mailinglist</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ email : string(255) <i>unique</i></li>
+                                <li>+ first_name : string(255)</li>
+                                <li>+ last_name : string(255)</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = mailinglists</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Media</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ path : string(320)</li>
+                                <li>+ sku : string(255) <i>unique nullable</i></li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ featured : bool = false</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ mimetype : string(255) = application/pdf</li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = medias</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ category() : Category</li>
+                                <li>+ images() : Image</li>
+                                <li>+ tags() : Tag</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Media</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Media</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Media</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Tag</td>
+                            </tr>
+                            <tr>
+                                <td>Media</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Membership</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ rank : int = 0</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = memberships</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ medias() : Media</li>
+                                <li>+ modules() : Module</li>
+                                <li>+ pricelists() : Pricelist</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Membership</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Media</td>
+                            </tr>
+                            <tr>
+                                <td>Membership</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Module</td>
+                            </tr>
+                            <tr>
+                                <td>Membership</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Pricelist</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Module</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ sku : string(255) <i>unique nullable</i></li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ featured : bool = false</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = modules</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ category() : Category</li>
+                                <li>+ images() : Image</li>
+                                <li>+ medias() : Media</li>
+                                <li>+ memberships() : Membership</li>
+                                <li>+ pricelists() : Pricelist</li>
+                                <li>+ tags() : Tag</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Module</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Module</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Module</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Media</td>
+                            </tr>
+                            <tr>
+                                <td>Module</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Membership</td>
+                            </tr>
+                            <tr>
+                                <td>Module</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Pricelist</td>
+                            </tr>
+                            <tr>
+                                <td>Module</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Tag</td>
+                            </tr>
+                            <tr>
+                                <td>Module</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">ModuleMediaMembership</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ media_id : unsigned</li>
+                                <li>+ membership_id : unsigned</li>
+                                <li>+ module_id : unsigned</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = module_media_memberships</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ media() : Media</li>
+                                <li>+ membership() : Membership</li>
+                                <li>+ module() : Module</li>
+                            </ul>
+                            <div class="alert alert-warning">There's no connection back to MMM from Media, Membership and Module.</div>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>MMM</td>
+                                <td> ? ------&gt; 1 </td>
+                                <td>Media</td>
+                            </tr>
+                            <tr>
+                                <td>MMM</td>
+                                <td> ? ------&gt; 1 </td>
+                                <td>Membership</td>
+                            </tr>
+                            <tr>
+                                <td>MMM</td>
+                                <td> ? ------&gt; 1 </td>
+                                <td>Module</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Order</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ user_id : unsigned</li>
+                                <li>+ paid : decimal(8,2) = 0</li>
+                                <li>+ transaction_id : string = Unknown <i>nullable</i></li>
+                                <li>+ payment_status : string = Completed <i>nullable</i></li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = orders</li>
+                                <li># casts : array = [options => array]</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ bundles() : Bundle</li>
+                                <li>+ coupons() : Coupon</li>
+                                <li>+ pricelists() : Pricelist</li>
+                                <li>+ products() : Product</li>
+                                <li>+ user() : User</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ getTotalprice() : decimal(8,2)</li>
+                                <li>+ addCoupon(Coupon) : Coupon</li>
+                                <li>+ getDiscounts() : array(key => value)</li>
+                                <li>+ setDiscounts() : array(key => value)</li>
+                                <li>+ verifyDiscount(Model, Coupon, Model = null) : array(key => value)</li>
+                            </ul>
+                            <div class="alert alert-warning">
+                                getDiscounts(), setDiscounts() and verifyDiscount() all return
+                                an array ('type', 'id', 'name', 'price', 'coupon_id', 'code',
+                                'amount', 'is_percent', 'value') that looks like it can be set
+                                up as a class instead.
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Order</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr>
+                                <td>Order</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Coupon</td>
+                            </tr>
+                            <tr>
+                                <td>Order</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Pricelist</td>
+                            </tr>
+                            <tr>
+                                <td>Order</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Product</td>
+                            </tr>
+                            <tr>
+                                <td>Order</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>User</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Page</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ title : string(255)</li>
+                                <li>+ slug : string(255)</li>
+                                <li>+ content : text</li>
+                                <li>+ private : bool = true</li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = pages</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ category() : Category</li>
+                                <li>+ images() : Image</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Page</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Page</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Page</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Portfolio</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = portfolios</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ category() : Category</li>
+                                <li>+ images() : Image</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Portfolio</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Portfolio</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Portfolio</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Post</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ title : string(255)</li>
+                                <li>+ slug : string(255)</li>
+                                <li>+ content : text</li>
+                                <li>+ featured : bool = true</li>
+                                <li>+ private : bool = true</li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = posts</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ category() : Category</li>
+                                <li>+ images() : Image</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Post</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Post</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Post</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Pricelist</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ price : decimal(8,2) = 0</li>
+                                <li>+ module_id : unsigned</li>
+                                <li>+ membership_id : unsigned</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = pricelists</li>
+                                <li># appends : array = [name]</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ bundles() : Bundle</li>
+                                <li>+ coupons() : Coupon</li>
+                                <li>+ membership() : Membership</li>
+                                <li>+ module() : Module</li>
+                                <li>+ orders() : Order</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ getNameAttribute() : string</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Pricelist</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr>
+                                <td>Pricelist</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Coupon</td>
+                            </tr>
+                            <tr>
+                                <td>Pricelist</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Membership</td>
+                            </tr>
+                            <tr>
+                                <td>Pricelist</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Module</td>
+                            </tr>
+                            <tr>
+                                <td>Pricelist</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Order</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Product</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ sku : string(255) <i>unique</i></li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ price : decimal(8,2) = 0</li>
+                                <li>+ featured : bool = false</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ category_id : unsigned <i>nullable</i></li>
+                                <li>+ weight_unit : string(3) <i>nullable</i></li>
+                                <li>+ volume_unit : string(3) <i>nullable</i></li>
+                                <li>+ length : decimal(8,3) <i>nullable</i></li>
+                                <li>+ width : decimal(8,3) <i>nullable</i></li>
+                                <li>+ height : decimal(8,3) <i>nullable</i></li>
+                                <li>+ weight : decimal(8,3) <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = products</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ bundles() : Bundle</li>
+                                <li>+ category() : Category</li>
+                                <li>+ coupons() : Coupon</li>
+                                <li>+ images() : Image</li>
+                                <li>+ orders() : Order</li>
+                                <li>+ tags() : Tag</li>
+                                <li>+ translations() : Translation</li>
+                                <li>+ variantParents() : Product</li>
+                                <li>+ variants() : Product</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Product</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Category</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Coupon</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Order</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Tag</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                            <tr>
+                                <td>Product</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Product (child)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Promotion</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string(255)</li>
+                                <li>+ short_description : string(255)</li>
+                                <li>+ long_description : text <i>nullable</i></li>
+                                <li>+ start_date : date</li>
+                                <li>+ end_date : date</li>
+                                <li>+ active : bool = true</li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = promotions</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ images() : Image</li>
+                                <li>+ translations() : Translation</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ <u>getAllActiveOrdered()</u> : Promotion</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Promotion</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Image</td>
+                            </tr>
+                            <tr>
+                                <td>Promotion</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Translation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Tag</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ name : string</li>
+                                <li>+ taggable_id : unsigned</li>
+                                <li>+ taggable_type : string(255)</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = tags</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ bundles() : Bundle</li>
+                                <li>+ medias() : Media</li>
+                                <li>+ modules() : Module</li>
+                                <li>+ products() : Product</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ <u>addTag(Model, string)</u> : bool</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Tag</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Bundle</td>
+                            </tr>
+                            <tr>
+                                <td>Tag</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Media</td>
+                            </tr>
+                            <tr>
+                                <td>Tag</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Module</td>
+                            </tr>
+                            <tr>
+                                <td>Tag</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>Product</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">Translation</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ lang : string(3)</li>
+                                <li>+ content : text</li>
+                                <li>+ translatable_id : unsigned</li>
+                                <li>+ translatable_type : string(255)</li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = translations</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ translatable() : Model</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">User</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ email : string <i>unique</i></li>
+                                <li>+ password : string(60)</li>
+                                <li>+ remember_token : string</li>
+                                <li>+ persmissions : text <i>nullable</i></li>
+                                <li>+ activated : bool = false</li>
+                                <li>+ activation_code : string <i>nullable index</i></li>
+                                <li>+ actiavted_at : timestamp <i>nullable</i></li>
+                                <li>+ last_login : timestamp <i>nullable</i></li>
+                                <li>+ persist_code : string <i>nullable</i></li>
+                                <li>+ reset_password_code : string <i>nullable index</i></li>
+                                <li>+ first_name : string <i>nullable</i></li>
+                                <li>+ last_name : string <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = users</li>
+                                <li># fillable : array = ['name', 'email', 'password']</li>
+                                <li># hidden : array = ['password', 'remember_token']</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ groups() : Group</li>
+                                <li>+ orders() : Order</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>User</td>
+                                <td> * &lt;------&gt; * </td>
+                                <td>Group</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td> 1 &lt;------&gt; * </td>
+                                <td>Order</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Models</small>
+                            </span>
+                            <h3 class="panel-title">UserPricelist (deprecated)</h3>
+                            <i>{ extends Model }</i>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>+ id : unsigned</li>
+                                <li>+ user_id : unsigned</li>
+                                <li>+ pricelist_id : unsigned</li>
+                                <li>+ paid : decimal(8,2) = 0</li>
+                                <li>+ transaction_id : string = Unknown <i>nullable</i></li>
+                                <li>+ payment_status : string = Completed <i>nullable</i></li>
+                                <li>+ options : text <i>nullable</i></li>
+                                <li>+ created_at : datetime</li>
+                                <li>+ updated_at : datetime</li>
+                                <li># table : string = orders</li>
+                                <li># casts : array = [options => array]</li>
+                                <li>- pricelistId</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ pricelists() : Pricelist</li>
+                                <li>+ user() : User</li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ save(array(key => value)) : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                                <li>+ delete() : bool
+                                    <span class="label label-default">override</span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li>+ getPricelistIdAttribute() : int</li>
+                                <li>+ setPricelistIdAttribute(int)</li>
+                                <li>+ getPricelistAttribute() : Pricelist</li>
+                            </ul>
+                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>UserPricelist</td>
+                                <td> ? &lt;------&gt; * </td>
+                                <td>Pricelist</td>
+                            </tr>
+                            <tr>
+                                <td>UserPricelist</td>
+                                <td> * &lt;------&gt; 1 </td>
+                                <td>User</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Helpers</small>
+                            </span>
+                            <h3 class="panel-title">RHelper</h3>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ <u>formatCurrency(float, string)</u> : string</li>
+                                <li>+ <u>keywords(array(Tag))</u> : string</li>
+                                <li>+ <u>cleanSlug(string)</u> : string</li>
+                                <li>+ <u>joinPaths()</u> : string</li>
+                                <li>+ <u>printMenu(array(string), string)</u> : string <i>HTML</i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>
+                                <small>Redooor\Redminportal\App\Helpers</small>
+                            </span>
+                            <h3 class="panel-title">RImage</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li># imagine : Imagine\Gd\Imagine</li>
+                                <li># library : string</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="list-unstyled">
+                                <li>+ __construct()</li>
+                                <li># setLibrary()</li>
+                                <li>+ resize(url : string, width : int, [height : int = null], [crop : bool = null], [quality: int = 90]) : string</li>
+                                <li>+ thumb(url : string, width : int, [height : int = null]) : string</li>
+                                <li>+ upload(File, [dir : string = null], [createDimensions : bool = false]) : string</li>
+                                <li>+ createDimensions(url : string, [dimenstions : array]) : string</li>
+                                <li>+ getUrl(url : string, [size : string = thumb], [fullUrl : bool = false]) : string</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <p>
+                                        <small>Redooor\Redminportal\App\Interfaces</small>
+                                    </p>
+                                    <i>&lt; interface &gt;</i>
+                                    <h3 class="panel-title">Measurable</h3>
+                                </div>
+                                <div class="panel-footer">
+                                    <ul class="list-unstyled">
+                                        <li>+ <u>getUnits()</u> : array(string)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span>
+                                        <small>Redooor\Redminportal\App\Classes</small>
+                                    </span>
+                                    <h3 class="panel-title">Volume</h3>
+                                    <i>{ implements Measurable }</i>
+                                </div>
+                                <div class="panel-footer">
+                                    <ul class="list-unstyled">
+                                        <li>+ <u>getUnits()</u> : array(string)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <span>
+                                        <small>Redooor\Redminportal\App\Classes</small>
+                                    </span>
+                                    <h3 class="panel-title">Weight</h3>
+                                    <i>{ implements Measurable }</i>
+                                </div>
+                                <div class="panel-footer">
+                                    <ul class="list-unstyled">
+                                        <li>+ <u>getUnits()</u> : array(string)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of row -->
         </div>
-      </div>
-      <!-- end of row -->
     </div>
-  </div>
 </body>
 
 </html>

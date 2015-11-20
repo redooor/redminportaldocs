@@ -1,6 +1,174 @@
 /* CSS Document */
 body {
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#content-wrapper {
+  margin-left: 240px;
+}
+/* Navbar */
+.navbar.navbar-inverse .navbar-brand img {
+  display: inline-block;
+  height: 17px;
+  vertical-align: middle;
+}
+.navbar.navbar-inverse .navbar-brand span {
+  vertical-align: middle;
+  display: inline-block;
+  height: 17px;
+  line-height: 17px;
+  margin-left: 3px;
+}
+/*
+ * Sidebar
+ */
+/* Hide for mobile, show later */
+@media (min-width: 768px) {
+  #sidebar {
+    position: fixed;
+    width: 240px;
+    top: 0;
+    bottom: 0;
+    left: -240px;
+    z-index: 1032;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    -webkit-transition: .3s ease all;
+         -o-transition: .3s ease all;
+            transition: .3s ease all;
+  }
+  #sidebar-title {
+    position: relative;
+    padding: 15px 20px;
+    background-color: #2196F3;
+  }
+  #sidebar-title .redooor-nav-logo {
+    font-size: 24px;
+    color: #fff;
+  }
+  #sidebar-title .redooor-nav-logo:hover,
+  #sidebar-title .redooor-nav-logo:focus {
+    text-decoration: none;
+  }
+  #sidebar-title .redooor-nav-logo img {
+    height: 28px;
+    vertical-align: text-top;
+  }
+  #sidebar-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1031;
+    background: #333333;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-transition: .3s ease all;
+         -o-transition: .3s ease all;
+            transition: .3s ease all;
+  }
+  #sidebar-wrapper.active #sidebar {
+    left: 0px;
+  }
+  #sidebar-wrapper.active #sidebar-overlay {
+    display: block;
+  }
+  #sidebar-wrapper.active .main-content {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    padding-right: 15px;
+    padding-left: 15px;
+    right: 0px;
+  }
+}
+/* Sidebar navigation */
+.nav-sidebar li.nav-sub-header:before {
+  content: '';
+  display: block;
+  border-top: 1px solid #ddd;
+}
+.nav-sidebar li.nav-sub-header span {
+  font-weight: 200;
+  color: #FF5722;
+}
+.nav-sidebar ul {
+  padding: 0;
+}
+.nav-sidebar ul li {
+  list-style: none;
+  display: block;
+  padding: 0;
+}
+.nav-sidebar li span {
+  display: block;
+  padding: 10px 20px;
+}
+.nav-sidebar li a {
+  display: block;
+  padding: 10px 20px;
+}
+.nav-sidebar li a:hover,
+.nav-sidebar li a:focus {
+  color: #23527c;
+  text-decoration: none;
+  background-color: #eee;
+}
+.nav-sidebar .active a,
+.nav-sidebar .active a:hover,
+.nav-sidebar .active a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+/* Override Redmaterials navbar */
+.navbar-nav.navbar-breadcrumb > li > a,
+.navbar-nav.navbar-breadcrumb > li > a:hover,
+.navbar-nav.navbar-breadcrumb > li > a:focus {
+  color: #428bca;
+}
+.navbar-nav.navbar-breadcrumb > li.active > a,
+.navbar-nav.navbar-breadcrumb > li.active > a:hover,
+.navbar-nav.navbar-breadcrumb > li.active > a:focus,
+.navbar-nav.navbar-breadcrumb > li.active > .navbar-text {
+  color: #898989;
+}
+/* For mobile screen navbar */
+.navbar-nav.navbar-xs li span {
+  padding: 10px 1.5em;
+  line-height: 23px;
+  position: relative;
+  display: block;
+  font-weight: 200;
+  color: #FF5722;
+}
+.navbar-nav.navbar-xs ul {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.navbar-nav.navbar-xs ul li {
+  list-style: none;
+  display: block;
+}
+.navbar-nav.navbar-xs ul li a {
+  color: #777;
+  padding: 10px 1.5em;
+  line-height: 23px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+}
+.navbar-nav.navbar-xs ul li a:hover,
+.navbar-nav.navbar-xs ul li a:focus {
+  color: #333;
+  background-color: transparent;
+}
+.navbar-nav.navbar-xs ul li span {
+  padding: 10px 1.5em;
+  line-height: 23px;
+  position: relative;
+  display: block;
 }
 /*# sourceMappingURL=rdocs.css.map */
